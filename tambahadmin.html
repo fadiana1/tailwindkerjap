@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Admin - BLUD Pariwisata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-md flex flex-col">
+            <div class="p-4 flex items-center">
+                <img src="img/logo blud.png" alt="Logo" class="w-30 h-15">
+            </div>
+            <nav class="mt-4 flex-1">
+                <ul>
+                    <li class="px-6 py-3 hover:bg-blue-100 flex items-center">🏠 Dashboard</li>
+                    <li class="px-6 py-3 bg-blue-200 font-semibold flex items-center">👥 Pengguna</li>
+                    <li class="px-6 py-3 hover:bg-blue-100 flex items-center">🛠 Edit Fitur</li>
+                    <li class="px-6 py-3 hover:bg-blue-100 flex items-center">📂 Pengajuan</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <header class="bg-white p-4 shadow-md flex justify-between items-center">
+                <h2 class="text-xl font-semibold text-blue-500">Tambah Admin Baru</h2>
+                <div class="flex items-center">
+                    <span class="mr-2 ml-4">Putri Asyifa</span>
+                    <img src="img/profile.jpg" alt="User" class="w-10 h-10 rounded-full">
+                </div>
+            </header>
+
+            <!-- Form Tambah Admin -->
+            <main class="p-6 bg-gray-50 flex-1">
+                <div class="bg-white p-6 shadow-md rounded-lg">
+                    <form id="adminForm" class="grid grid-cols-2 gap-4">
+                        <input type="text" id="username" placeholder="Default Username" class="border p-2 rounded-lg" required>
+                        <input type="email" id="email" placeholder="Alamat Email" class="border p-2 rounded-lg" required>
+                        <input type="text" id="adminID" placeholder="Default ID Admin" class="border p-2 rounded-lg" required>
+                        <input type="text" id="phone" placeholder="Nomor Handphone" class="border p-2 rounded-lg" required>
+                        <input type="date" id="registerDate" class="border p-2 rounded-lg" required>
+                        <input type="file" id="signature" class="border p-2 rounded-lg">
+                        <input type="text" id="fullName" placeholder="Nama Lengkap Admin" class="border p-2 rounded-lg" required>
+                        <div class="col-span-2">
+                            <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg w-full">Tambah</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <footer class="bg-white p-4 text-center text-sm text-gray-500">
+                Copyright © BLUD Pariwisata, All rights reserved.
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("adminForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let adminData = {
+                username: document.getElementById("username").value,
+                adminID: document.getElementById("adminID").value,
+                registerDate: document.getElementById("registerDate").value,
+                fullName: document.getElementById("fullName").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value
+            };
+
+            let adminList = JSON.parse(localStorage.getItem("adminList")) || [];
+            adminList.push(adminData);
+            localStorage.setItem("adminList", JSON.stringify(adminList));
+
+            window.location.href = "daftaradmin.html";
+        });
+    </script>
+</body>
+</html>

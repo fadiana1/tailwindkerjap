@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengguna Umum - BLUD Pariwisata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-md flex flex-col">
+            <div class="p-4 flex items-center">
+                <img src="img/logo blud.png" alt="Logo" class="w-30 h-15">
+            </div>
+            <nav class="mt-4 flex-1">
+                <ul>
+                    <li class="px-6 py-3 hover:bg-blue-100 flex items-center">
+                        <span class="mr-3">🏠</span> Dashboard
+                    </li>
+                    <!-- Pengguna Dropdown -->
+                    <li class="px-6 py-3 bg-blue-200 font-semibold flex flex-col">
+                        <div class="flex items-center justify-between cursor-pointer" onclick="toggleDropdown()">
+                            <div class="flex items-center">
+                                <span class="mr-3">👥</span> Pengguna
+                            </div>
+                            <span id="arrowIcon" class="transition-transform duration-300">▼</span>
+                        </div>
+
+                        <ul id="dropdownMenu" class="ml-6 mt-2 text-sm hidden">
+                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer">Admin</li>
+                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer">Umum</li>
+                        </ul>
+                    </li>
+                    <li class="px-6 py-3 hover:bg-blue-100 flex items-center">
+                        <span class="mr-3">🛠</span> Edit Fitur
+                    </li>
+                    <li class="px-6 py-3 hover:bg-blue-100 flex items-center">
+                        <span class="mr-3">📂</span> Pengajuan
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+         <!-- Main Content -->
+         <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <header class="bg-white p-4 shadow-md flex justify-between items-center">
+                <div class="flex items-center justify-end w-full">
+                    <span class="mr-2">Putri Asyifa</span>
+                    <img src="img/profile.jpg" alt="User" class="w-10 h-10 rounded-full">
+                </div>
+            </header> 
+
+            <!-- Content -->
+            <main class="p-6 bg-gray-50 flex-1">
+                <div class="bg-white shadow-md rounded-lg p-4">
+                    <!-- Flex container untuk judul dan search bar -->
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">Daftar Pengguna</h3>
+                        <input type="text" placeholder="Search..." class="border px-4 py-2 rounded-lg w-64">
+                    </div>
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="bg-blue-400 text-white">
+                                <th class="p-3">No</th>
+                                <th class="p-3">UserID</th>
+                                <th class="p-3">Username Account</th>
+                                <th class="p-3">Activate Date</th>
+                                <th class="p-3">Identitas Pengguna</th>
+                                <th class="p-3">Status</th>
+                                <th class="p-3">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="p-3 text-center">1</td>
+                                <td class="p-3 text-center">RD11</td>
+                                <td class="p-3">Raisya Diva</td>
+                                <td class="p-3 text-center">10/01/2025</td>
+                                <td class="p-3">
+                                    <span class="font-semibold">Nama:</span> Raisya Diva Lestari <br>
+                                    <span class="font-semibold">Email:</span> raisyaprat12@gmail.com <br>
+                                    <span class="font-semibold">No. Hp:</span> +62800785467
+                                </td>
+                                <td class="p-3 text-center">
+                                    <span class="bg-yellow-300 text-black px-3 py-1 rounded-full text-sm">Waiting</span>
+                                </td>
+                                <td class="p-3 text-center">
+                                    <div class="flex justify-center space-x-2">
+                                        <button class="bg-green-500 text-white px-3 py-1 rounded-lg">✏ Edit</button>
+                                        <button class="bg-red-500 text-white px-3 py-1 rounded-lg">🗑 Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-3 text-center">2</td>
+                                <td class="p-3 text-center">FD21</td>
+                                <td class="p-3">Fadyana</td>
+                                <td class="p-3 text-center">07/01/2025</td>
+                                <td class="p-3">
+                                    <span class="font-semibold">Nama:</span> Fadyra Niara <br>
+                                    <span class="font-semibold">Email:</span> dyanara12@gmail.com <br>
+                                    <span class="font-semibold">No. Hp:</span> +62800785467
+                                </td>
+                                <td class="p-3 text-center">
+                                    <span class="bg-green-400 text-white px-3 py-1 rounded-full text-sm">Verified</span>
+                                </td>
+                                <td class="p-3 text-center">
+                                    <div class="flex justify-center space-x-2">
+                                        <button class="bg-green-500 text-white px-3 py-1 rounded-lg">✏ Edit</button>
+                                        <button class="bg-red-500 text-white px-3 py-1 rounded-lg">🗑 Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <footer class="bg-white p-4 text-center text-sm text-gray-500">
+                Copyright © BLUD Pariwisata, All rights reserved.
+            </footer>
+        </div>
+    </div>
+     <!-- JavaScript untuk Dropdown -->
+     <script>
+        function toggleDropdown() {
+            const menu = document.getElementById("dropdownMenu");
+            const arrow = document.getElementById("arrowIcon");
+
+            if (menu.classList.contains("hidden")) {
+                menu.classList.remove("hidden");
+                arrow.classList.add("rotate-180");
+            } else {
+                menu.classList.add("hidden");
+                arrow.classList.remove("rotate-180");
+            }
+        }
+    </script>
+</body>
+</html>

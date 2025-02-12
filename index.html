@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pengajuan Sewa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+        <div class="text-blue-600 font-semibold text-lg">Objek Wisata</div>
+        <button class="border border-blue-500 text-blue-500 px-4 py-1 rounded-md hover:bg-blue-500 hover:text-white transition">Masuk/Daftar</button>
+    </nav>
+
+    <!-- Formulir Pengajuan -->
+    <div class="max-w-md mx-auto bg-white p-6 mt-6 shadow-lg rounded-md">
+        <h2 class="bg-blue-500 text-white text-lg font-semibold px-4 py-2 rounded-md inline-block">Formulir Pengajuan Sewa</h2>
+
+        <form class="mt-4 space-y-4">
+            <div>
+                <label class="block text-gray-700">*Masukkan nama pengusul</label>
+                <input type="text" class="w-full border rounded-md p-2" placeholder="Nama Lengkap" required>
+            </div>
+
+            <div>
+                <label class="block text-gray-700">*Masukkan nomor handphone pengusul</label>
+                <input type="tel" class="w-full border rounded-md p-2" required>
+            </div>
+
+            <div>
+                <label class="block text-gray-700">*Asal instansi</label>
+                <input type="text" class="w-full border rounded-md p-2" required>
+            </div>
+
+            <div>
+                <label class="block text-gray-700">*Alamat Instansi/pengusul</label>
+                <input type="text" class="w-full border rounded-md p-2" required>
+            </div>
+
+            <div>
+                <label class="block text-gray-700">*Tanggal kegiatan</label>
+                <input type="date" class="w-full border rounded-md p-2" required>
+            </div>
+
+            <div>
+                <label class="block text-gray-700">*Lokasi pilihan</label>
+                <select class="w-full border rounded-md p-2" required>
+                    <option>Pilih lokasi</option>
+                    <option>Menara Teratai</option>
+                    <option>Taman Maskemambang</option>
+                    <option>Taman Botani</option>
+                    <option>Madhang Maning Park</option>
+                    <option>Indraprana</option>
+                    <option>Lokawisata baturraden</option>
+                    <option>Bukit Bintang</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-gray-700">*Deskripsi singkat kegiatan</label>
+                <textarea class="w-full border rounded-md p-2" rows="3" required></textarea>
+            </div>
+
+            <div>
+                <label class="block text-gray-700">*Wajib melampirkan surat pengajuan, KTP pengusul dan proposal kegiatan</label>
+                <input type="file" class="w-full border rounded-md p-2">
+            </div>
+
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600 transition">
+                Ajukan
+            </button>
+        </form>
+    </div>
+
+     <!-- Footer -->
+<footer class="bg-blue-700 text-white p-6 mt-6">
+    <div class="flex justify-between items-center w-full">
+        <!-- Logo di pojok kiri -->
+        <img src="/img/logo blud.jpg" alt="BLUD Pariwisata" class="w-16 h-16 self-start">
+
+        <!-- Informasi Footer -->
+        <div class="flex justify-around w-full max-w-md text-sm text-white text-center">
+            <div>
+                <h3 class="font-semibold">Link Terkait</h3>
+                <p>Objek Wisata</p>
+            </div>
+            <div>
+                <h3 class="font-semibold">Kontak</h3>
+                <p>080-0000-000</p>
+            </div>
+            <div>
+                <h3 class="font-semibold">Alamat</h3>
+                <p>Lokasi Indonesia</p>
+            </div>
+        </div>
+    </div>
+    <p class="text-xs mt-4 text-center text-white">Copyright © BLUD Pariwisata. All rights reserved.</p>
+</footer>
+</body>
+</html>
