@@ -26,7 +26,14 @@
         <aside class="w-64 bg-white shadow-md flex flex-col min-h-screen">
             <nav class="mt-4 flex-1">
                 <ul>
-                    <li class="px-6 py-3 hover:bg-blue-100 flex items-center">🏠 Dashboard</li>
+                    <li class="relative">
+                        <button class="w-full flex justify-between items-center px-6 py-3 hover:bg-blue-100">
+                            <div class="flex items-center">
+                                <span class="mr-3">🏠</span> Dashboard
+                            </div>
+                        </button>
+                    </li>
+                    
                     <li class="relative">
                         <button id="buttonPengguna" onclick="toggleDropdownUser()" class="w-full flex justify-between items-center px-6 py-3 hover:bg-blue-100">
                             <div class="flex items-center">
@@ -40,7 +47,20 @@
                         </ul>
                     </li>   
 
-                    <li class="px-6 py-3 hover:bg-blue-100 flex items-center">⚙️ Edit Fitur</li>
+                    <li class="relative">
+                        <button id="buttonEditFitur" onclick="toggleDropdownEditFitur()" class="w-full flex justify-between items-center px-6 py-3 hover:bg-blue-100">
+                            <div class="flex items-center">
+                                <span class="mr-3">⚙️</span> Edit Fitur
+                            </div>
+                            <img id="arrowEditFitur" src="img/dropdownimg.png" alt="Dropdown Icon" class="w-4 h-4 transition-transform duration-300">
+                        </button>
+                        <ul id="dropdownEditFitur" class="ml-6 mt-1 text-sm hidden bg-white shadow-md rounded-md">
+                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer">Jadwal</li>
+                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer">Berita</li>
+                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer">Tempat Wisata</li>
+                        </ul>
+                    </li>
+
                     <li class="relative">
                         <button id="buttonPengajuan" onclick="toggleDropdownPengajuan()" class="w-full flex justify-between items-center px-6 py-3 hover:bg-blue-100">
                             <div class="flex items-center">
@@ -205,7 +225,8 @@
     function closeAllDropdowns(exceptId) {
         const dropdowns = {
         "dropdownUserMenu": "arrowUser",
-        "dropdownPengajuan": "arrowPengajuan"
+        "dropdownPengajuan": "arrowPengajuan",
+        "dropdownEditFitur": "arrowEditFitur"
     };
 
     Object.keys(dropdowns).forEach((id) => {
@@ -231,7 +252,41 @@
     });
     });
 
-//button action
+//Fungsi dropdown Edit Fitur
+    function toggleDropdownEditFitur() {
+        const menu = document.getElementById("dropdownEditFitur");
+        const arrow = document.getElementById("arrowEditFitur");
+
+    // Pastikan hanya menutup dropdown lain
+    closeAllDropdowns("dropdownEditFitur");
+
+    menu.classList.toggle("hidden");
+    arrow.classList.toggle("rotate-180");
+    }
+
+    // Menutup dropdown jika klik di luar elemen dropdown
+    document.addEventListener("click", function(event) {
+        const dropdown = document.getElementById("dropdownEditFitur");
+        const button = document.getElementById("buttonEditFitur");
+        const arrow = document.getElementById("arrowEditFitur");
+
+    if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.classList.add("hidden");
+        arrow.classList.remove("rotate-180");
+    }
+    });
+
+    // Menangkap klik pada dropdown dan mengarahkan ke halaman terkait
+    document.querySelectorAll("#dropdownEditFitur li").forEach(item => {
+        item.addEventListener("click", function() {
+            const targetPage = this.getAttribute("data-href");
+        if (targetPage) {
+            window.location.href = targetPage; // Navigasi ke halaman
+        }
+    });
+    });
+
+//button action 
     document.addEventListener("DOMContentLoaded", function () {
         // Ambil semua tombol dalam tabel
         const buttons = document.querySelectorAll("button[data-href]");
