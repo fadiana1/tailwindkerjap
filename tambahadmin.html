@@ -31,11 +31,11 @@
                             <div class="flex items-center">
                                 <span class="mr-3">👤</span> Pengguna
                             </div>
-                            <span id="arrowUser" class="transition-transform duration-300">▼</span>
+                            <img id="arrowUser" src="img/dropdownimg.png" alt="Dropdown Icon" class="w-4 h-4 transition-transform duration-300">
                         </button>
                         <ul id="dropdownUserMenu" class="ml-6 mt-1 text-sm hidden bg-white shadow-md rounded-md">
-                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer">Admin</li>
-                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer">Umum</li>
+                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer" data-href="daftaradmin.html">Admin</li>
+                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer" data-href="daftaruser.html">Umum</li>
                         </ul>
                     </li>  
 
@@ -46,11 +46,11 @@
                             <div class="flex items-center">
                                 <span class="mr-3">📑</span> Pengajuan
                             </div>
-                            <span id="arrowPengajuan" class="transition-transform duration-300">▼</span>
+                            <img id="arrowPengajuan" src="img/dropdownimg.png" alt="Dropdown Icon" class="w-4 h-4 transition-transform duration-300">
                         </button>
                         <ul id="dropdownPengajuan" class="ml-6 mt-1 text-sm hidden bg-white shadow-md rounded-md">
-                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer">Approved</li>
-                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer">Rejected</li>
+                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer" data-href="approvenew.html">Approved</li>
+                            <li class="px-6 py-2 hover:bg-blue-100 cursor-pointer" data-href="rejectpengajuan.html">Rejected</li>
                         </ul>
                     </li>
                 </ul>
@@ -77,97 +77,94 @@
                 </div>
             </main>
 
-             <!-- JavaScript untuk Dropdown -->
-            <script>
-                function toggleDropdownUser() {
-    const menu = document.getElementById("dropdownUserMenu");
-    const arrow = document.getElementById("arrowUser");
-
-    // Pastikan hanya menutup dropdown lain
-    closeAllDropdowns("dropdownUserMenu");
-
-    menu.classList.toggle("hidden");
-    arrow.classList.toggle("rotate-180");
-}
-
-// Fungsi toggle dropdown Pengajuan
-function toggleDropdownPengajuan() {
-    const menu = document.getElementById("dropdownPengajuan");
-    const arrow = document.getElementById("arrowPengajuan");
-
-    // Pastikan hanya menutup dropdown lain
-    closeAllDropdowns("dropdownPengajuan");
-
-    menu.classList.toggle("hidden");
-    arrow.classList.toggle("rotate-180");
-}
-
-// Fungsi untuk menutup semua dropdown lain sebelum membuka yang baru
-function closeAllDropdowns(exceptId) {
-    const dropdowns = {
-        "dropdownUserMenu": "arrowUser",
-        "dropdownPengajuan": "arrowPengajuan"
-    };
-
-    Object.keys(dropdowns).forEach((id) => {
-        if (id !== exceptId) {
-            const menu = document.getElementById(id);
-            const arrow = document.getElementById(dropdowns[id]);
-
-            if (menu && !menu.classList.contains("hidden")) {
-                menu.classList.add("hidden");
-                arrow.classList.remove("rotate-180");
-            }
-        }
-    });
-}
-
-// Menutup dropdown jika klik di luar elemen dropdown
-document.addEventListener("click", function(event) {
-    const dropdowns = [
-        { button: "buttonPengguna", menu: "dropdownUserMenu", arrow: "arrowUser" },
-        { button: "buttonPengajuan", menu: "dropdownPengajuan", arrow: "arrowPengajuan" }
-    ];
-
-    dropdowns.forEach(({ button, menu, arrow }) => {
-        const dropdownMenu = document.getElementById(menu);
-        const dropdownButton = document.getElementById(button);
-        const dropdownArrow = document.getElementById(arrow);
-
-        if (dropdownButton && dropdownMenu && !dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.classList.add("hidden");
-            dropdownArrow.classList.remove("rotate-180");
-        }
-    });
-    });
-    </script>
-
-            <!-- Footer -->
-            <footer class="bg-white p-4 text-center text-sm text-gray-500">
-                Copyright © BLUD Pariwisata, All rights reserved.
-            </footer>
-        </div>
-    </div>
-
+    <!-- JavaScript untuk Dropdown -->
     <script>
-        document.getElementById("adminForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            let adminData = {
-                username: document.getElementById("username").value,
-                adminID: document.getElementById("adminID").value,
-                registerDate: document.getElementById("registerDate").value,
-                fullName: document.getElementById("fullName").value,
-                email: document.getElementById("email").value,
-                phone: document.getElementById("phone").value
-            };
-
-            let adminList = JSON.parse(localStorage.getItem("adminList")) || [];
-            adminList.push(adminData);
-            localStorage.setItem("adminList", JSON.stringify(adminList));
-
-            window.location.href = "daftaradmin.html";
+        function toggleDropdownUser() {
+            const menu = document.getElementById("dropdownUserMenu");
+            const arrow = document.getElementById("arrowUser");
+    
+        // Pastikan hanya menutup dropdown lain
+        closeAllDropdowns("dropdownUserMenu");
+    
+        menu.classList.toggle("hidden");
+        arrow.classList.toggle("rotate-180");
+        }
+    
+        // Menutup dropdown jika klik di luar elemen dropdown
+        document.addEventListener("click", function(event) {
+            const dropdown = document.getElementById("dropdownUserMenu");
+            const button = document.getElementById("buttonPengguna");
+            const arrow = document.getElementById("arrowUser");
+    
+        if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.add("hidden");
+            arrow.classList.remove("rotate-180");
+        }
         });
-    </script>
+    
+        // Menangkap klik pada dropdown dan mengarahkan ke halaman terkait
+        document.querySelectorAll("#dropdownUserMenu li").forEach(item => {
+            item.addEventListener("click", function() {
+                const targetPage = this.getAttribute("data-href");
+            if (targetPage) {
+                window.location.href = targetPage; // Navigasi ke halaman
+            }
+        });
+        });
+    
+        // Fungsi toggle dropdown Pengajuan
+        function toggleDropdownPengajuan() {
+            const menu = document.getElementById("dropdownPengajuan");
+            const arrow = document.getElementById("arrowPengajuan");
+    
+            closeAllDropdowns("dropdownPengajuan");
+    
+            menu.classList.toggle("hidden");
+            arrow.classList.toggle("rotate-180");
+        }
+    
+    // Menutup dropdown jika klik di luar elemen dropdown
+        document.addEventListener("click", function(event) {
+            const dropdown = document.getElementById("dropdownPengajuan");
+            const button = document.getElementById("buttonPengajuan");
+            const arrow = document.getElementById("arrowPengajuan");
+    
+        if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.add("hidden");
+            arrow.classList.remove("rotate-180");
+        }
+    });
+    
+    // Fungsi menutup dropdown lain sebelum membuka dropdown yang baru
+        function closeAllDropdowns(exceptId) {
+            const dropdowns = {
+            "dropdownUserMenu": "arrowUser",
+            "dropdownPengajuan": "arrowPengajuan"
+        };
+    
+        Object.keys(dropdowns).forEach((id) => {
+            if (id !== exceptId) {
+                const menu = document.getElementById(id);
+                const arrow = document.getElementById(dropdowns[id]);
+    
+                if (menu && !menu.classList.contains("hidden")) {
+                    menu.classList.add("hidden");
+                    arrow.classList.remove("rotate-180");
+                }
+            }
+        });
+    }
+    
+    // Menangkap klik pada dropdown dan mengarahkan ke halaman terkait
+        document.querySelectorAll("#dropdownPengajuan li").forEach(item => {
+            item.addEventListener("click", function() {
+                const targetPage = this.getAttribute("data-href");
+            if (targetPage) {
+                window.location.href = targetPage; // Navigasi ke halaman
+            }
+        });
+        });
+    
+        </script>
 </body>
 </html>
